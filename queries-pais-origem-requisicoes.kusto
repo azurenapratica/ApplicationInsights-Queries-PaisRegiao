@@ -1,0 +1,12 @@
+// Documentação sobre Kusto Query Language
+// https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/
+
+// Query com quantidade de requisições por país/região de origem,
+// incluindo o uso de Alias para os campos de retorno
+requests
+| summarize Qtde=count() by AreaOrigem=client_CountryOrRegion
+
+// Gráfico do tipo pizza com requisições por país/região origem
+requests
+| summarize Qtde=count() by CidadeOrigem=client_CountryOrRegion 
+| render piechart
